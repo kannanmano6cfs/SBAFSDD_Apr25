@@ -13,6 +13,7 @@ public class Product {
     String prdname;
     String prdprice;
     String prddescription;
+    String prdcount;
 
     public Product(int id) {
         this.id = id;
@@ -61,7 +62,7 @@ public class Product {
         this.id = id;
     }
 
-    String prdcount;
+
 
 }
 

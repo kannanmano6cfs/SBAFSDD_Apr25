@@ -37,6 +37,12 @@ public class prdsvcController {
         return new ResponseEntity<>("Count of product is:"+count, HttpStatus.OK);
     }
 
+    @GetMapping("/getcount")
+    public Long getcount()
+    {
+        return repo.count();
+    }
+
     @GetMapping("/products")
     public Iterable<Product> getProducts() {
      Iterable<Product> products = repo.findAll();
@@ -64,5 +70,11 @@ public class prdsvcController {
         product.setPrdprice("15000");
         repo.save(product);
         return new ResponseEntity<String>("New product added succesfully",HttpStatus.OK);
+    }
+
+    @PostMapping("/addproduct1")
+    public ResponseEntity<String> addProduct1(@RequestBody Product product) {
+        repo.save(product);
+        return new ResponseEntity<String>("New product added succesfully through URI",HttpStatus.OK);
     }
 }
