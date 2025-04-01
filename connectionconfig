@@ -1,0 +1,23 @@
+#MS SQL Server
+spring.datasource.url=jdbc:sqlserver://THIVIM\\MSSQLSERVER01:1433;databasename=shoppingDB1;encrypt=true; trustServerCertificate=true
+spring.datasource.username=sathivim
+spring.datasource.password=sathivim1
+spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+#MYSQL Server
+spring.datasource.url=jdbc:mysql://localhost:3306/dbname
+spring.datasource.username=uname
+spring.datasource.password=pword
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+#Orcale Server
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521:osid(oracle system identifier)
+spring.datasource.username=uname
+spring.datasource.password=pword
+
+#HSQL DB
+spring.datasource.url=jdbc:hsqldb:mem:dbname
+spring.datasource.driver-class-name==org.hsqldb.jdbc.JDBCDriver
+spring.datasource.username=uname
+spring.datasource.password=pword
