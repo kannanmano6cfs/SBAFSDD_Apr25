@@ -1,5 +1,6 @@
 package com.learning.exproductservice.Controller;
 
+import com.learning.exproductservice.Exception.ProductNotFoundException;
 import com.learning.exproductservice.Model.Product;
 import com.learning.exproductservice.Repository.prdsvcRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,11 +55,11 @@ public class prdsvcController {
         Optional<Product> product = repo.findById(id);
         return product.orElse(null);
     }
-
+    //Exception handling
     @GetMapping("/getproduct2/{id}")
     public Product getProduct2(@PathVariable int id) {
         Optional<Product> product = repo.findById(id);
-        return product.orElse(null);
+        return product.orElseThrow(() -> new ProductNotFoundException(id));
     }
 
     @PostMapping("/addproduct")
@@ -77,4 +78,24 @@ public class prdsvcController {
         repo.save(product);
         return new ResponseEntity<String>("New product added succesfully through URI",HttpStatus.OK);
     }
+
+    @PutMapping("/updateproduct/{id}")
+    public ResponseEntity<String> updateProduct(@PathVariable int id, @RequestBody Product product) {
+        Product product1 = repo.findById(id).orElseThrow();
+        product1.setPrdname(product.getPrdname());
+        product1.setPrdcount(product.getPrdcount());
+        product1.setPrddescription(product.getPrddescription());
+        product1.setPrdprice(product.getPrdprice());
+        repo.save(product1);
+        return new ResponseEntity<>("Product Details updated successfully",HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteproduct/{id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable int id) {
+        repo.deleteById(id);
+        return new ResponseEntity<String>("Product deleted successfully",HttpStatus.OK);
+    }
+
+
+
 }
