@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: serviceA
+          uri: lb://serviceA
+          predicates:
+            - Path=/api/servicea/**

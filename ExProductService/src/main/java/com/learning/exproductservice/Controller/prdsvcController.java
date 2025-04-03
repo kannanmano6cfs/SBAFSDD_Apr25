@@ -4,6 +4,8 @@ import com.learning.exproductservice.Exception.ProductNotFoundException;
 import com.learning.exproductservice.Model.Product;
 import com.learning.exproductservice.Repository.prdsvcRepository;
 import com.learning.exproductservice.Service.ProductService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.QualifierAnnotationAutowireCandidateResolver;
@@ -14,6 +16,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Optional;
 
@@ -25,6 +28,9 @@ public class prdsvcController {
     public prdsvcController(ProductService productService) {
         this.productService = productService;
     }
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Autowired
     private Environment environment;
@@ -118,5 +124,25 @@ public class prdsvcController {
     @GetMapping("/search")
     public ResponseEntity<Page<Product>> searchProduct(@RequestParam(required = true) String prdname,Pageable pageable) {
         return ResponseEntity.ok(productService.filterProducts(prdname,pageable));
+    }
+
+    //Spring Cloud Demonstration
+
+    private static final String ordsvc_API="http://localhost:8091/api/placeorder";
+    int attempt=0;
+
+    @GetMapping("/chooseproduct/{id}")
+    //@Retry(name="fss1", fallbackMethod = "fallback")
+    @CircuitBreaker(name="fss2", fallbackMethod = "fallback")
+    public ResponseEntity<String> chooseProduct(@PathVariable int id) {
+      //  System.out.println("Product chosen for place the order "+attempt++);// demo for retry
+        Optional<Product> product = repo.findById(id);
+        ResponseEntity<String> response=restTemplate.postForEntity(ordsvc_API,product,String.class);
+        System.out.println("Order placed successfully");// demo
+        return response;
+    }
+// Fallback method created for @Retry and @CircuitBreaker
+    public ResponseEntity<String> fallback(Throwable ex) {
+        return new ResponseEntity<>("Order unable to placed due to server issues", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
