@@ -67,16 +67,17 @@ public class ServiceController {
     @PostMapping("/addService")
     public ResponseEntity<String> addService() {
         Service service = new Service();
-        service.setId(1);
+
         service.setName("Service");
         service.setAmount(2000);
         service.setDescription("Service Desc");
+        service.setQuantity(4);
         repo.save(service);
         return new ResponseEntity<String>("New service added succesfully",HttpStatus.OK);
     }
 
     @PostMapping("/addService1")
-    public ResponseEntity<String> addProduct1(@RequestBody Service service) {
+    public ResponseEntity<String> addService1(@RequestBody Service service) {
         repo.save(service);
         return new ResponseEntity<String>("New service added succesfully through URI",HttpStatus.OK);
     }

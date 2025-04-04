@@ -12,7 +12,7 @@ public class Service {
     private String name;
     private String description;
     private double amount;
-    private String quantity;
+    private int quantity;
 
     public long getId() {
         return id;
@@ -46,11 +46,11 @@ public class Service {
         this.amount = amount;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 }

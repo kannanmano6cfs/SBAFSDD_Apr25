@@ -19,12 +19,22 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain  securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((auth)->auth
-                .requestMatchers("/api/**").permitAll()
-//                .requestMatchers(HttpMethod.POST,"/api/addproduct").hasAnyRole("USER","ADMIN")
-//                .requestMatchers("/api/getproduct2/**").hasRole("ADMIN")
-//                .requestMatchers("/api/deleteproduct/**").hasRole("ADMIN")
-                .anyRequest().authenticated()).httpBasic(Customizer.withDefaults());
+//        http.authorizeHttpRequests((auth)->auth
+//                .anyRequest().permitAll()
+//                //.requestMatchers("/api/**").permitAll()
+////                .requestMatchers(HttpMethod.POST,"/api/addproduct").hasAnyRole("USER","ADMIN")
+////                .requestMatchers("/api/getproduct2/**").hasRole("ADMIN")
+////                .requestMatchers("/api/deleteproduct/**").hasRole("ADMIN")
+//        //        .anyRequest().authenticated()
+//        ).httpBasic(Customizer.withDefaults());
+//        return http.build();
+        http
+                .csrf(csrf -> csrf.disable()) // 🔥 Disable CSRF for API requests
+                .authorizeHttpRequests(auth -> auth
+                        .anyRequest().permitAll() // Allow all requests
+                )
+                .httpBasic(Customizer.withDefaults()); // Basic Auth (optional)
+
         return http.build();
     }
 
