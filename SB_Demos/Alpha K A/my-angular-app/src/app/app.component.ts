@@ -6,11 +6,11 @@ import { MainComponent } from './main/main.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,HeaderComponent,MainComponent,FooterComponent],
+  imports: [RouterOutlet, HeaderComponent, MainComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'my-angular-app';
-  message = "Hello World";
+  message = "Welcome to explore my first angular web project";
 }
