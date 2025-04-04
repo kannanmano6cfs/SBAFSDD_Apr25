@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>Angular blaze Demo</h1>
+    
+    <div class="demo-section">
+      <h2>Interpolation</h2>
+      <p>Welcome to {{appName}}!</p>
+      <p>Current date: {{getCurrentDate()}}</p>
+    </div>
+    
+    <div class="demo-section">
+      <h2>One-way Binding</h2>
+      <input [value]="oneWayValue" readonly>
+      <button (click)="changeOneWayValue()">Change Value</button>
+    </div>
+    
+    <div class="demo-section">
+      <h2>Two-way Binding</h2>
+      <input [(ngModel)]="twoWayValue">
+      <p>You typed: {{twoWayValue}}</p>
+    </div>
+  </div>
