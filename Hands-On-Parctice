@@ -2,12 +2,14 @@
 Spring Boot MVC
 Spring Data JPA with MS SQL Server
 ----
+
 ----Day 2----
 Spring testing
 Spring Boot testing
 REST API
 Spring security
 ----
+
 ----Day 3----
 Spring Rest API
 Pagination
@@ -15,3 +17,7 @@ Filtering
 Inter-Sevice Communication
 (Spring Cloud)
 ----
+
+----Day 4----
+Prepare database with all concepts and ER Diagram 
+(Digital Payment Management System)
