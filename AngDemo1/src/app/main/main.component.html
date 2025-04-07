@@ -1,15 +1,29 @@
 <h2>We are offering technical courses as below for the people from all the timezones.</h2>
+<!--Static Values
 <ul>
     <li>Vmware Courses</li>
     <li>AWS and Azure Courses</li>
     <li>Full Stack Development Courses</li>
 </ul>
+-->
+<button (click)="showCourses()">Show Courses</button><button (click)="hideCourses()">Hide Courses</button>
+<div *ngIf="flag">
+<ul>
+    <li *ngFor="let course of courses">
+        {{course}}
+    </li>
+</ul>
+</div>
 <hr>
+<button (click)="changeClass()">Change CSS</button>
+<div [class]="className">
 <h4>Calculations using Interpolations</h4>
 <p>Addition {{ num1 + num2 }}</p>
+</div>
 <hr>
 <h4>Property Binding</h4>
-<img [src]="pic1" height="300px" [alt]="altText" />
+<button (click)="changeHeight()">Zoom In/Out</button>
+<img [src]="pic1" [style.height]="height" [alt]="altText" />
 <hr>
 <h4>Event Binding</h4>
 <h3>{{text}}</h3>

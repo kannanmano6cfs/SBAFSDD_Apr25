@@ -9,15 +9,44 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './main.component.css'
 })
 export class MainComponent {
-  num1: number = 1565
+  num1: number = 0
   num2: number = 54
 
   pic1: string = "images\\teamtraining.jpg"
   altText: string = "Image Unavailable now..."
   text: string = ""
   message: string ="Vmware courses"
+  flag: boolean =true
+
+  courses: string[] =[
+    "VMware Courses",
+    "Azure and AWS Courses",
+    "Networking Courses",
+    "Development Courses"
+  ]
+
+  showCourses(){
+    this.flag=true
+  }
+
+  hideCourses(){
+    this.flag=false
+  }
 
   showText(){
     this.text="Hello everyone! Welcome to the session!!"
+  }
+
+  height: string ="300px"
+  changeHeight(){
+    if(this.height=="300px")
+      this.height="500px"
+    else
+      this.height="300px"
+  }
+  
+  className: string = "class1"
+  changeClass(){
+    this.className="class2"
   }
 }
