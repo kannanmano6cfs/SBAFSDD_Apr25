@@ -1,15 +1,28 @@
 <h2>We are in L1 Blaze training and the training courses are listed below.</h2>
+<button (click)="showCourses()">Show Courses</button>
+<button (click)="hideCourses()">Hide Courses</button>
+<div *ngIf="flag"> 
 <ul>
+    <li *ngFor="let course of courses">
+         {{course}}
+    </li>
+</ul> 
+</div>
+<!-- <ul>
     <li>Spring Boot Course</li>
     <li>Angular Course</li>
     <li>Full Stack Development Courses</li>
-</ul>
+</ul> -->
 <hr>
+<button (click) ="changeClass()" > Change CSS Style</button>
+<div [class]="className">
 <h4>Calculations using Interpolations</h4>
 <p>Addition {{ num1 + num2 }}</p>
+</div>
 <hr>
-<h4>Great place to work</h4>
-<img [src]="greatToPlaceImg" height="800px" width="1000px" [alt]="altText" />
+<h4>Great place to work    <button (click) ="changeHeight()">Zoom In/Out</button></h4>
+<!-- <img [src]="greatToPlaceImg" height="800px" width="1000px" [alt]="altText" /> -->
+<img [src]="greatToPlaceImg" [style.height]="height" [style.width]="width" [alt]="altText" />
 <hr>
 <h4>Enter details</h4>
 <h3>{{text}}</h3>

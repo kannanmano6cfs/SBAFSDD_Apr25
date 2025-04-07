@@ -1,0 +1,42 @@
+<h1>Registration Form</h1>
+<h1>{{companyName}}</h1>
+<h2>{{ title | uppercase}}</h2>
+
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+
+<div ngModelGroup="details">
+    <div class="form-group">
+        <label for="firstName" class="form-lable">First Name</label>
+        <input type="text" ngModel name="firstname" placeholder="Enter first name" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="lastName" class="form-lable">Last Name</label>
+        <input type="text" ngModel name="lastname" placeholder="Enter last name" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email" class="form-lable">Email ID</label>
+        <input type="email" ngModel name="email" placeholder="Enter your mail id" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="course" class="form-lable">Select Course</label>
+        <select ngModel name="course"  class="form-control" required>
+            <option value="Spring Boot Course"> Spring Boot Course</option>
+            <option value="Spring Boot Course"> Spring Boot Course</option>
+            <option value="Spring Boot Course"> Spring Boot Course</option>
+            <option value="Spring Boot Course"> Spring Boot Course</option>
+        </select>
+    </div>
+    <div>
+        <button [disabled]="myForm.invalid" type="submit" class="btn btn-primary" >Register</button> 
+    </div>
+</div>
+
+</form>
+<hr>
+<div>
+
+    <p>Registeration details logs :{{myForm.value | json}} </p>
+</div>

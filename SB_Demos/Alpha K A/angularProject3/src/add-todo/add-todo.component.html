@@ -1,0 +1,13 @@
+<p>add-todo works!</p>
+
+
+<h1> Add Todo Item</h1>
+
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+    <div class="form-group">
+        <label for="item"> Todo Items:</label>
+        <input ngModel type="text" name ="item" placeholder="Enter an Item" required/>
+        <button [disabled]="myForm.invalid" type="submit" >Add Item</button>
+   </div>
+
+</form>
