@@ -13,11 +13,11 @@ export class OtpService {
 
   sendOtp(email: string): Observable<any>{
     const params = new HttpParams().set('email', email);
-    return this.http.post<any>(`${this.apiUrl}/send`,{},{ params });
+    return this.http.post<any>(`${this.apiUrl}/api/otp/send`,{},{ params });
   }
 
   verifyOtp(email: string, otp: string){
     const params = new HttpParams().set('email', email).set('otp',otp);
-    return this.http.post<any>(`${this.apiUrl}/verify`,{},{ params });
+    return this.http.post<any>(`${this.apiUrl}/api/otp/verify`,{},{ params });
   }
 }

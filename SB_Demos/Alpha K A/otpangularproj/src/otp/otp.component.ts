@@ -35,7 +35,7 @@ export class OtpComponent {
   }
 
      
-  verifytOtp(){  
+  verifyOtp(){  
     this.service.verifyOtp(this.email, this.otp).subscribe({
         next: (response)=>{
           this.otpSent=true
