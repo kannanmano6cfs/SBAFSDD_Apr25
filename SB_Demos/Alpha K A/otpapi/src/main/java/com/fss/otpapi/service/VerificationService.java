@@ -31,10 +31,9 @@ public class VerificationService {
 
     // Verify OTP
     public String verifyOtp(String email, String code) {
-        Optional<VerificationCode> storedCode = repository.findByEmail(email);
+        VerificationCode verificationCode = repository.findByEmail(email);
 
-        if (storedCode.isPresent()) {
-            VerificationCode verificationCode = storedCode.get();
+        if (verificationCode!=null) {
 
             if (verificationCode.getCode().equals(code) && verificationCode.getExpiryTime().isAfter(LocalDateTime.now())) {
                 return "OTP verification successful!";

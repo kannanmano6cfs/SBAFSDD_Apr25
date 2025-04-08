@@ -31,14 +31,14 @@ public class VerificationController {
     }
 
     @PostMapping("/verify")
-    public ResponseEntity<Map<String, String>> verifyOtp(@RequestParam String email, @RequestParam String code) {
+    public ResponseEntity<Map<String, String>> verifyOtp(@RequestParam String email, @RequestParam String otp) {
         // Logic to verify OTP
         Map<String, String> response = new HashMap<>();
         boolean isValid = true;
 
         if (isValid) {
-            verificationService.verifyOtp(email, code);
-            response.put("message", "OTP verification successful");
+            String result =verificationService.verifyOtp(email, otp);
+            response.put("message", result);
             return ResponseEntity.ok(response);
         } else {
             response.put("message", "Invalid OTP");
