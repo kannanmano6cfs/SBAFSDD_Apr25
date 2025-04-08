@@ -1,0 +1,21 @@
+<div class="container mt-5">
+    <h2>Email OTP Verification</h2>
+  
+    <div *ngIf="!otpSent">
+      <label for="email">Enter Email:</label>
+      <input type="email" [(ngModel)]="email" class="form-control" placeholder="Enter email">
+      <button class="btn btn-primary mt-3" (click)="requestOtp()">Request OTP</button>
+    </div>
+  
+    <div *ngIf="otpSent">
+      <p>OTP sent to: {{ email }}</p>
+      <label for="otp">Enter OTP:</label>
+      <input type="text" [(ngModel)]="otp" class="form-control" placeholder="Enter OTP">
+      <button class="btn btn-success mt-3" (click)="verifyOtp()">Verify OTP</button>
+    </div>
+  
+    <div *ngIf="message" class="alert mt-3" [ngClass]="{'alert-success': success, 'alert-danger': !success}">
+      {{ message }}
+    </div>
+  </div>
+  
