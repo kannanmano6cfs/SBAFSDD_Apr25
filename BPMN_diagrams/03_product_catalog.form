@@ -1,0 +1,42 @@
+{
+  "components": [
+    {
+      "text": "Product Catalog Service",
+      "type": "text",
+      "layout": {
+        "row": "Row_1gkmbar",
+        "columns": null
+      },
+      "id": "Field_0e1bgc8"
+    },
+    {
+      "label": "Product ID",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_080145n",
+        "columns": null
+      },
+      "id": "Field_0dy81k6",
+      "key": "prodcutId"
+    },
+    {
+      "label": "No. of Products Selected",
+      "type": "number",
+      "layout": {
+        "row": "Row_0746c7t",
+        "columns": null
+      },
+      "id": "Field_1cjdwzh",
+      "key": "quantity"
+    }
+  ],
+  "type": "default",
+  "id": "myForm3",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.33.1"
+  },
+  "schemaVersion": 18
+}
