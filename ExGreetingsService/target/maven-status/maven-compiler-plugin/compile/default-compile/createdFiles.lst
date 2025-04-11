@@ -1,2 +1,4 @@
-com\learning\exgreetingsservice\Controller\greetController.class
+com\learning\exgreetingsservice\Model\Product.class
 com\learning\exgreetingsservice\ExGreetingsServiceApplication.class
+com\learning\exgreetingsservice\greetRepository.class
+com\learning\exgreetingsservice\Controller\greetController.class
